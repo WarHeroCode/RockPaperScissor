@@ -1,66 +1,75 @@
-var choice1 = document.getElementById('choice1');
-var choice = document.getElementById('choice');
-var compare = document.getElementById('compare');
-
-
-
-
-
-function userThrow(){
+function getComputerChoice() {
 
     var randomNumber = Math.random();
-         if (randomNumber < 0.34) {
-             randomNumber = "Rock";
-          }else if(randomNumber <= 0.67) {
-             randomNumber = "Paper";
-          }else{
-             randomNumber = "Scissors";
-          }; 
-          
+    if (randomNumber < 0.34) {
+        randomNumber = "Rock";
+    } else if (randomNumber <= 0.67) {
+        randomNumber = "Paper";
+    } else {
+        randomNumber = "Scissors";
+    };
 
-var choice = document.getElementsByName('choice');
+    return randomNumber;
+}
 
+function getUserChoice() {
 
-for (i =0;i < choice.length; i++){
-    if (choice[i].checked === true){
-     Choice = choice[i].value;   }}
-     
-     generateComputerChoice = choice1;
-           return choice1;
-           
+    var choices = document.getElementsByName('choice');
+    var userChoice = '';
 
- }
-     function compare (choice1,choice) {
-    if (choice1=== choice) {
-        alert("It's a tie!");
-    }
-    if (choice1 === "rock") {
-        if (choice === "scissors") {
-            // rock wins
-            alert("You win!");
-        } else {
-            // paper wins
-            alert("You lose! Try again.");
+    for (i = 0; i < choices.length; i++) {
+        if (choices[i].checked === true) {
+            userChoice = choices[i].value;
         }
     }
-    if (choice1 === "paper") {
-        if (choice === "rock") {
-            // paper wins
-            alert("You win!");
-        } else {
-            // scissors wins
-            alert("You lose! Try again.");
+
+    return userChoice;
+
+}
+
+
+function compare(computerChoice, userChoice) {
+
+    if (computerChoice === userChoice) {
+        window.alert("It's a tie!");
+    } else {
+        if (computerChoice === "Rock") {
+            if (userChoice === "Scissors") {
+                // rock wins
+                window.alert("You win!");
+            } else {
+                // paper wins
+                window.alert("You lose! Try again.");
+            }
         }
-    }
-    if (choice1 === "scissors") {
-        if (choice === "rock") {
-            // rock wins
-            alert("You lose! Try again.");
-        } else {
-            // scissors wins
-            alert("You win!");
-            
+        if (computerChoice === "Paper") {
+            if (userChoice === "Rock") {
+                // paper wins
+                window.alert("You win!");
+            } else {
+                // scissors wins
+                window.alert("You lose! Try again.");
+            }
+        }
+        if (computerChoice === "Scissors") {
+            if (userChoice === "Rock") {
+                // rock wins
+                window.alert("You lose! Try again.");
+            } else {
+                // scissors wins
+                window.alert("You win!");
+
+            }
         }
     }
 }
 
+function PlayTheGame() {
+	debugger;
+
+    var computerChoice = getComputerChoice();
+    var userChoice = getUserChoice();
+
+    compare(computerChoice, userChoice);
+
+}
